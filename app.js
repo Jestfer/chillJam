@@ -35,8 +35,9 @@ function twitterReq(){
           return tweets
         });
 
-        reject( () => { console.log("failure") });
-    });
+        reject( () => { 
+          console.log("failure") });
+        });
   });
 
   return prom
