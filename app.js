@@ -30,7 +30,13 @@ function twitterReq(){
 
   const prom = new Promise(function(resolve,reject) {
     T.get('search/tweets', params, function(err, data, response) {
-      console.log(data);
+      console.log(data.statuses[0].entities.urls[0].url)
+      console.log(data.statuses[0].entities)
+   
+      
+      data.statuses.forEach(entity => {
+        console.log(entity.entities.media)
+      });
         resolve( () => {
           var tweets = data.statuses.map(tweet => tweet.text)
           return tweets
