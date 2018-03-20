@@ -30,15 +30,21 @@ function twitterReq(){
 
   const prom = new Promise(function(resolve,reject) {
     T.get('search/tweets', params, function(err, data, response) {
-      console.log(data.statuses[0].entities.urls[0].url)
-      console.log(data.statuses[0].entities)
+      // console.log(data.statuses[0].entities.urls[0].url)
+      // console.log(data.statuses[0].entities)
    
       
-      data.statuses.forEach(entity => {
-        console.log(entity.entities.media)
-      });
+      // data.statuses.forEach(entity => {
+      //   console.log(entity.entities.media)
+      // });
         resolve( () => {
-          var tweets = data.statuses.map(tweet => tweet.text)
+          var tweets = data.statuses.map(function (tweetData) {
+            var tweet = {};
+            tweet.text = tweetData.text
+            tweet.url = tweetData.entities.urls[0].url
+            return tweet;
+          });
+
           return tweets
         });
 
