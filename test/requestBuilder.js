@@ -7,7 +7,6 @@ chai.use(chaiAsPromised);
 chai.use(spies);
 chai.should();
 
-// var testJson = require('./testData/sampleTweetSearchJson.js');
 const requestBuilder    = require("../lib/requestBuilder.js")
 const tParser           = require("../lib/tweetParser.js")
 const tweetParser       = tParser.tweetParser;
